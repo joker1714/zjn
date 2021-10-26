@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人间有味是清欢</title>
+</head>
+<body>
+    <script src="js/pixi.min.js"></script>
+    <script>
+		var app = new PIXI.Application(1000,700);
+        document.body.appendChild(app.view);
+        
+        var bg = new PIXI.Sprite.fromImage("res/bg.jpg");
+        app.stage.addChild(bg);
+        
+        
+        var bg2=new PIXI.Sprite.fromImage("res/bg2.png");
+        app.stage.addChild(bg2);
+        bg2.x=400;
+        bg2.y=250;
+        bg2.scale.x=0.85;
+        bg2.alpha=0.35;
+   
+        
+        var bg3=new PIXI.Sprite.fromImage("res/bg3.png");
+        app.stage.addChild(bg3);
+        bg3.y=-200;
+        bg3.scale.x=1.6;
+        bg3.alpha=0.5;
+        
+        
+        var bg4=new PIXI.Sprite.fromImage("res/bg4.png");
+        app.stage.addChild(bg4);
+        bg4.y=-200;
+        bg4.scale.x=1.04;
+        bg4.alpha=0.4;
+        
+        var an=new PIXI.Sprite.fromImage("res/an.png");
+        app.stage.addChild(an);
+        an.x=470;
+        an.y=250;
+        an.scale.x=0.2;
+        an.scale.y=0.2;
+        
+        var txt=new PIXI.Text("进入");
+        an.addChild(txt);
+        txt.scale.x=7;
+        txt.scale.y=7;
+        txt.anchor.set(-0.5,-1.6);
+        txt.style.fontFamily="隶书";
+        
+        var title=new PIXI.Text("人\n间\n有\n味");
+        app.stage.addChild(title);
+        title.scale.x=1.5;
+        title.scale.y=1.5;
+        title.x=1200;
+        title.y=50;
+        title.style.fontFamily="隶书";
+        
+        var title2=new PIXI.Text("是\n清\n欢");
+        app.stage.addChild(title2);
+        title2.scale.x=1.5;
+        title2.scale.y=1.5;
+        title2.x=1200;
+        title2.y=120;
+        title2.style.fontFamily="隶书";
+        
+        app.ticker.add(animate2);
+            function animate2(){
+            	title.x-=4;
+            	title2.x-=4;
+        	    if(title.x<=920){
+        		    title.x=920;
+        	    }
+        	    if(title2.x<=850){
+        		    title2.x=850;
+        	    }
+        	
+            }
+        
+        an.interactive=true;
+        an.buttonMode=true;
+        an.on("click",story);
+        
+        var x=0;
+        function story(){
+        	var sbg=new PIXI.Sprite.fromImage("res/sbg.jpg");
+        	app.stage.addChild(sbg);
+        	sbg.x=-1200;
+        	var t=new PIXI.Sprite.fromImage("res/t.png");
+        	sbg.addChild(t);
+        	t.scale.x=1.25;
+        	t.scale.y=1.25;
+        	t.x=115;
+        	var st=new PIXI.Text("主人公游历背景");
+        	t.addChild(st);
+        	st.x=250;
+        	st.y=200;
+        	st.style.fontFamily="楷书";
+        	sbg.alpha=0;
+        	st.alpha=0;
+            t.alpha=0;
+        	app.ticker.add(animate);
+            function animate(){
+        	    sbg.x+=5;
+        	    if(x<=1){
+        	    	sbg.alpha=x;
+        	        st.alpha=x;
+        	        t.alpha=x;
+        	        x+=0.0045;
+        	    }
+        	    if(sbg.x>0){
+        		    sbg.x=0;
+        	    }
+        	
+            }
+        }
+       
+        
+        
+		
+    </script>
+</body>
+</html>
